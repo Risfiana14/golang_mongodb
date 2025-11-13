@@ -29,4 +29,12 @@ func UserRoutes(app *fiber.App) {
 	protected.Post("/pekerjaan", services.CreatePekerjaan)
 	protected.Put("/pekerjaan/:id", services.UpdatePekerjaan)
 	protected.Delete("/pekerjaan/:id", services.DeletePekerjaan)
+
+	// ---------- FILE UPLOAD ----------
+	protected.Post("/upload", services.UploadFile)
+	protected.Get("/upload", services.GetAllFiles)
+	protected.Get("/upload/:id", services.GetFileByID)
+	protected.Delete("/upload/:id", services.DeleteFile)
+
 }
+
