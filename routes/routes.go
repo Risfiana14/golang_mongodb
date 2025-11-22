@@ -3,17 +3,17 @@ package routes
 import (
 	"tugas8/app/services"
 	"tugas8/middleware"
-
+	
 	"github.com/gofiber/fiber/v2"
 )
 
-func UserRoutes(app *fiber.App) {
-	api := app.Group("/api")
+func UserRoutes(api fiber.Router) {
+
 
 	// Login & auth middleware (gunakan token lama)
 	api.Post("/login", services.Login)
 
-	protected := api.Group("", middleware.AuthRequired())
+	protected := api.Group("/", middleware.AuthRequired())
 
 	// CRUD ALUMNI
 	protected.Get("/alumni", services.GetAllAlumni)
